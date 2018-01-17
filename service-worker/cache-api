@@ -1,0 +1,16 @@
+// caches can contain request and response (HTML, CSS, JavaScript)
+// to create or open a cache
+caches.open('my-stuff').then(function(cache) {
+
+});
+
+// add cache items by using
+cache.put(request, response);
+
+// takes an array of request or urls, fetches them
+// and puts the request response pairs into
+// the cache |||| If any of the items fails to cache, none will be added
+cache.addAll([
+  '/foo',
+  '/bar'
+]);
