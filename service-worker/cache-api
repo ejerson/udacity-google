@@ -14,3 +14,9 @@ cache.addAll([
   '/foo',
   '/bar'
 ]);
+
+// to call something out of the caches
+cache.match(request);
+
+// tries to find a match in any caches starting with the oldest
+caches.match(request);
