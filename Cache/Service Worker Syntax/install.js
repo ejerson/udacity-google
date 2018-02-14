@@ -1,4 +1,9 @@
 self.addEventListener('install', function(event) {
+
+  // automatically install a new service worker in waiting.
+  self.skipWaiting();
+
+
   event.waitUntil(
     caches.open('wittr-static-v1').then(function(cache) {
       return cache.addAll([
