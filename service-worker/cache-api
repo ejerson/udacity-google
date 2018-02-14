@@ -20,3 +20,6 @@ cache.match(request);
 
 // tries to find a match in any caches starting with the oldest
 caches.match(request);
+
+caches.delete(cacheName);
+chaches.keys();
