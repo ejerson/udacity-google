@@ -28,28 +28,49 @@ IndexController.prototype._registerServiceWorker = function() {
     // indexController._updateReady()
     if(reg.waiting) {
         indexController._updateReady();
+        return;
     }
 
     // TODO: if there's an updated worker installing, track its
     // progress. If it becomes "installed", call
     // indexController._updateReady()
-    if(reg.installed) {
-        indexController._updateReady();
+    if(reg.installing) {
+        indexController._trackInstalling(reg.installing);
     }
+
+    // if(reg.installed) {
+    //     indexController._updateReady();
+    // }
 
     // TODO: otherwise, listen for new installing workers arriving.
     // If one arrives, track its progress.
     // If it becomes "installed", call
     // indexController._updateReady()
-    reg.installing.addEventListener("statechange", function() {
-        if (this.state == "installed") {
-          indexController._updateReady();
-        }
+
+    reg.addEventListener("updatefound", function() {
+        indexController._trackInstalling(reg.installing);
     });
+
+
+    // reg.installing.addEventListener("statechange", function() {
+    //     if (this.state == "installed") {
+    //       indexController._updateReady();
+    //     }
+    // });
 
 
   });
 };
+
+IndexController.prototype._trackInstalling = function(worker) {
+    var indexController = this;
+
+    worker.addEventListener("statechange", function) {
+      if (worker.state == "installed") {
+        indexController._updateReady();
+      }
+    }
+}
 
 IndexController.prototype._updateReady = function() {
   var toast = this._toastsView.show("New version available", {
