@@ -1,0 +1,17 @@
+self.skipWaiting(); // Signals that the updated service worker
+should not wait, and just
+take over right away.
+
+***************   Where to place self.skipWaiting();
+// from a page
+reg.installing.postMessage({foo: "bar"});
+
+// in the service worker
+self.addEventListener("message", function(event) {
+    event.data; // { foo: "bar"}
+});
+
+// Used as a signal to reload the page
+navigator.serviceWorker.addEventListener("controllerchange", function() {
+    // navigator.serviceWorker.controller has changed
+});
