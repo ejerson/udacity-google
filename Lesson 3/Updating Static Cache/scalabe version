@@ -1,0 +1,50 @@
+var staticCacheName = "wittr-static-v1";
+
+self.addEventListener('install', function(event) {
+
+  self.skipWaiting();
+  event.waitUntil(
+    // TODO: change the site's theme, eg swap the vars in public/scss/_theme.scss
+    // Ensure at least $primary-color changes
+    // TODO: change cache name to 'wittr-static-v2'
+    caches.open(staticCacheName).then(function(cache) {
+      return cache.addAll([
+        '/',
+        'js/main.js',
+        'css/main.css',
+        'imgs/icon.png',
+        'https://fonts.gstatic.com/s/roboto/v15/2UX7WLTfW3W8TclTUvlFyQ.woff',
+        'https://fonts.gstatic.com/s/roboto/v15/d-6IYplOFocCacKzxwXSOD8E0i7KZn-EPnyo3HZu7kw.woff'
+      ]);
+    })
+  );
+});
+
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    // gets all the caches that exists
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        // filters the cacheNames and only delete those that starts with
+        // 'wittr' and not equal to the name of the resent cache staticCacheName
+        cacheNames.filter(function(cacheName) {
+            return cacheName.startsWith('wittr-') &&
+                   cacheName != staticCacheName;
+          // cycles through all the cache that meets the filter
+          // rule and delete each one
+        }).map(function(cacheName) {
+            return cache.delete(cacheName);
+        })
+      );
+
+    })
+  );
+});
+
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+      return response || fetch(event.request);
+    })
+  );
+});

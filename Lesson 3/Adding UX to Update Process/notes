@@ -1,0 +1,52 @@
+navigator.serviceWorker.register("/sw.js").then(function(reg) {
+  reg.register();
+  reg.update();
+  reg.installing;
+  reg.waiting;
+  reg.active;
+  reg.addEventListener("updatefound", function() {
+      // reg.installing has changed.
+  });
+});
+
+
+
+var sw = reg.installing;
+console.log(sw.state); // ...logs "installing"
+
+// STATE CAN ALSO BE:
+// "installed"
+// "activating"
+// "activated"
+// "redundant"
+
+sw.addEventListener("statechange", function() {
+    // happens whenever the sw.state has changed.
+});
+
+if (!navigator.serviceWorker.controller) {
+    // page didn't load using a service worker
+}
+
+if (reg.waiting) {
+    // there's an update ready!
+}
+
+if (reg.installing) {
+    // there's an update in progress
+
+    reg.installing.addEventListener("statechange", function() {
+        if (this.state == "installed") {
+            // there's an update ready!
+        }
+    });
+}
+
+reg.addEventListener("updatefound", function() {
+
+    reg.installing.addEventListener("statechange", function() {
+        if (this.state == "installed") {
+            // there's an update ready!
+        }
+    });
+});
