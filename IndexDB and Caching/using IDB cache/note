@@ -1,0 +1,2 @@
+WebSocket | allows us to fetch data, bypasses both the service worker
+  and the http cache
