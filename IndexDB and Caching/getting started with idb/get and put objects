@@ -1,5 +1,6 @@
 import idb from 'idb';
 
+// index can only be created as part of a verion upgrade
 // change to version 2, in order to create another database version
 var dbPromise = idb.open('test-db', 2, function(upgradeDb) {
   // in order to avoid errors from being generated due to an already created
