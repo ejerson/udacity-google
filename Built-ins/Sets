@@ -1,0 +1,16 @@
+1. In mathematics, a set is a collection of distinct items.
+    {2, 4, 5, 6} is a set.
+    {1, 2, 2, 3} is not a set. 2 is duplicated.
+2. Arrays do not enforce items to be unique, so use a set instead.
+3. ES6 Sets
+      * an object that stores unique items
+      * not indexed based,
+      * items in a set cannot be accessed individually
+4. Creating a Set
+      const games = new Set();
+      console.log(games); // Set {}
+5. Use an array to create a Set
+      const games = new Set(['Super Mario Bros.', 'Banjo-Kazooie', 'Mario Kart', 'Super Mario Bros.']);
+      console.log(games); // Set {'Super Mario Bros.', 'Banjo-Kazooie', 'Mario Kart'}
+
+NOTE: the example set on 5 automatically removes duplicate value.
