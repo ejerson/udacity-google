@@ -1,0 +1,38 @@
+1. 3 ways to loop through a map
+      1. step through each key/value by using Map's default iterator
+      2. use for...of loop
+      3. using .forEach() method
+
+2. MapIterator
+      * .keys() and .values() will both return MapIterator (iterator object)
+
+      let iteratorObjForKeys = members.keys();
+      iteratorObjForKeys.next(); // Object {value: 'Evelyn', done: false}
+
+      OR
+
+      let iteratorObjForValues = members.values();
+      iteratorObjForValues.next(); // Object {value: 75.68, done: false}
+
+3. for...of loop
+
+      for (const member of members) {
+          console.log(member);
+      }
+
+      ['Evelyn', 75.68]
+      ['Liam', 20.16]
+
+      NOTE: using a for...of loop will result in getting an array that
+      contains the key in the 1st index and the value in the 2nd index.
+
+      SOLVE: using array destructuring
+
+      for (const member of members) {
+          var [key, value] = member; // array destructuring
+          console.log(key, value);
+      }
+
+3. forEach() loop
+      // arrow function makes this look simpler
+      members.forEach((key, value) => console.log(key, value));
