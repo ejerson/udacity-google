@@ -1,0 +1,17 @@
+1. Sets are built-in iterables
+      * can use Set default iterator, to step through each item
+      * or for...of to loop through a Set
+
+2. .values() returns a new iterator object (SetIterator)
+   .next() is used to step through each item
+
+      const iterator = months.values();
+      iterator.next(); // Object {value: 'January', done: false}
+      iterator.next(); // Object {value: 'February', done: false}
+
+3. for...of loop | easier than .values | .next() combo
+      const colors = new Set(['red', 'orange', 'yellow', 'green', 'blue', 'violet', 'brown', 'black']);
+
+      for (const color of colors) {
+          console.log(color);
+      }

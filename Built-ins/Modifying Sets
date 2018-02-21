@@ -1,0 +1,19 @@
+1. .add(), .delete() methods
+      const games = new Set(['Super Mario Bros.', 'Banjo-Kazooie', 'Mario Kart', 'Super Mario Bros.']);
+
+      games.add('Banjo-Tooie');
+      games.add('Age of Empires');
+      games.delete('Super Mario Bros.');
+
+      console.log(games); // Set {'Banjo-Kazooie', 'Mario Kart', 'Banjo-Tooie', 'Age of Empires'}
+
+2. .clear() | to delete all items
+      games.clear();
+      console.log(games); // Set {}
+
+3. .add()
+      * can add duplicate items to a Set
+      * returns the set if item addition is successful.
+4. .delete()
+      * can delete non-existent item
+      * returns a Boolean depending on successful deletion

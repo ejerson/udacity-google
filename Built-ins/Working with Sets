@@ -1,0 +1,11 @@
+1. .size()
+      * return number of item in a Set (just like java arraylist)
+2. .has() (.contains() - java arraylist)
+      * check if an item exists in a Set, returns Boolean value
+4. .values()
+      * return the values in a Set
+      * the return value is a SetIterator object
+      console.log(months.values());
+      // SetIterator {'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'}
+5. .keys() used with maps, similar/alias to .values()
