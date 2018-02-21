@@ -1,0 +1,11 @@
+1. loading
+      * document is still loading
+2. interactive
+      * document has been loaded and parsed
+      * sub-resources (css and images) still needs  to load
+      * useful to create promise here if I want to run code
+      when the initial elements have been loaded
+3. complete
+      * everything is loaded!
+
+4. every time ready state changes, a ready state event fires

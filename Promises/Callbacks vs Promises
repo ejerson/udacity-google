@@ -1,0 +1,17 @@
+1. Promise object | used for deferred and asynchronous computations. -MDN
+      * no way to know when an asynchronous request will finish
+
+2. Asynchronous requests | involves network requests, events,
+   thread, or elapsed time
+
+3. Callbacks | the default javascript technique to do asynchronous work
+
+4. Four States of Promise
+      1. Fulfilled(Resolved) | action succeeded
+      2. Rejected | action failed
+      3. Pending | action has not yet finished
+      4. Settled | promise has either been fulfilled or rejected
+
+NOTE: It is best practice to assume that any operation could fail at any time!
+
+AVOID: Pyramid of Doom (highly nested callbacks), use promises instead.

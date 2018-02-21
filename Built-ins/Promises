@@ -1,0 +1,43 @@
+IMPORTANT:
+      * a Promise will return an object immediately
+      * that object has a .then() method that has two functions:
+          1. a function to run if the request completed successfully
+          2. a function if the request failed to complete
+
+      mySundae.then(function(sundae) {
+            console.log(`Time to eat my delicious ${sundae}`);
+      }, function(msg) {
+            console.log(msg);
+            self.goCry(); // not a real method
+      });
+
+
+
+1. ES6, new way to handle asynchronous requests, Promises do the following:
+
+
+
+      * going back and forth to make requests
+      * being able to do work during downtime
+      * being notified that a request has finished
+
+      NOTE: Do this now, so I can pick up where I left off, then
+      notify me if you're done.
+
+2. resolve() method, used to indicate that a request has completed successfully.
+
+3. reject() method, used when the request could not be completed.
+
+      new Promise(function (resolve, reject) {
+      window.setTimeout(function createSundae(flavor = 'chocolate') {
+        const sundae = {};
+        // request ice cream
+        // get cone
+        // warm up ice cream scoop
+        // scoop generous portion into cone!
+        if ( /* iceCreamConeIsEmpty(flavor) */ ) {
+            reject(`Sorry, we're out of that flavor :-(`);
+        }
+        resolve(sundae);
+      }, Math.random() * 2000);
+      });

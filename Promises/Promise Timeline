@@ -1,0 +1,13 @@
+1. Even listener that is set after an even has fired is never called.
+    * an event can fire many times
+
+2. Promise
+      * a promise can only settle once
+      * happens in the main thread, and potentially blocking
+      * use for ajax requests
+      * use for Worker
+
+      new Promise(function(resolve, rejected) {
+          resolve('hi'); // works!
+          resolve('bye'); // can't happen a second time
+      });

@@ -1,0 +1,8 @@
+1. Promise is a try-catch wrapper around code that will finish at
+  unpredictable times.
+    * promise is a constructor
+    * can store in a variable or not
+    * pass a function with two arguments (resolve and reject are two callbacks)
+    * any value passed to resolve or reject will be received as the subsequent
+    value for .then or .catch
+    * if a promise is passed onto resolve or reject, the promise executes first!
