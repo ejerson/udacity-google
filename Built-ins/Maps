@@ -1,0 +1,49 @@
+1. Sets vs Maps
+      * similar properties and methods
+      * Sets::Arrays // sets to arrays
+      * Maps::Objects // maps to objects
+
+2. Collections of key-value pairs
+      * Map is an object that stores key-value pairs
+      * both the keys and the values can be objects,
+      primitive values or a combination of both
+
+      const employees = new Map();
+      console.log(employees); // Map{}
+
+3. Modifying Maps
+      * MUST use .set() method to add value inside a map
+
+      const employees = new Map();
+
+      employees.set('james.parkes@udacity.com', {
+          firstName: 'James',
+          lastName: 'Parkes',
+          role: 'Content Developer'
+      });
+
+      console.log(employees); // Map {'james.parkes@udacity.com' => Object {...}}
+
+4. .set() takes two arguments
+      * 1st is the key (used to reference the second argument)
+      * 2nd is the value
+      * can reuse the same key, but previous key will be overridden by the new key
+      * return value is the Map object itself if successful
+
+5. .clear() removes all key-value pairs
+
+6. .delete()
+      * can delete nonexistent value in a Map
+      * returns true if key-pair is successfully deleted, false otherwise.
+
+7. .has() to check if a key-value pair exists by passing a key.
+      const members = new Map();
+
+      members.set('Evelyn', 75.68);
+      members.set('Marcus', 10.25);
+
+      console.log(members.has('Jesus')); // false
+      console.log(members.has('Marcus')); // true
+
+8. .get()
+      console.log(members.get('Marcus')); // 10.25
