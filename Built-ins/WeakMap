@@ -1,0 +1,18 @@
+1. WeakMap vs Map
+      * can only contain objects as keys
+      * not iterable, can't be looped
+      * doesn't have .clear(), GB will take care of emptying it
+      * takes advantage of GB to remove unused objects
+
+2. Sample WeakMap
+      const book1 = { title: 'Pride and Prejudice', author: 'Jane Austen' };
+
+      const library = new WeakMap();
+      library.set(book1, true);
+
+      console.log(library);
+      // WeakMap {Object {title: 'Pride and Prejudice', author: 'Jane Austen'} => true }
+
+      NOTE: error if you try to add something other than an object as key
+
+3.
