@@ -1,0 +1,33 @@
+1. string and arrays are sample of built-in iterables
+2. for...of loop, only objects that are iterable can use this.
+   const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+      for (const digit of digits) {
+      console.log(digit);
+    }
+3. iterable interface
+      * in order for an object to be iterable, it must
+      implement the iterable interface
+4. iterator method (inside Symbol.iterator)
+      * zero argument function
+      * returns an iterator object
+5. iterator object
+      * an object that conforms to the iterator protocol
+6. iterator protocol
+      * used to define a standard way that an object produces a sequence of values.
+      * we now have a process of defining how objects iterate.
+      * implement .next() method to do the above
+7. .next()
+      * returns an object with two properties
+          a. value: represents the value of the current item
+          b. done: if true, the end of sequence is reached, false otherwise.
+
+      const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+      const arrayIterator = digits[Symbol.iterator]();
+
+      console.log(arrayIterator.next());
+      console.log(arrayIterator.next());
+      console.log(arrayIterator.next());
+
+      Object {value: 0, done: false}
+      Object {value: 1, done: false}
+      Object {value: 2, done: false}

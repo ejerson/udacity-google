@@ -1,0 +1,26 @@
+1. unique and immutable
+2. used to identify object properties.
+3. Symbol Creation - the description ('apple') is only used to describe a symbol.
+   const sym1 = Symbol('apple');
+   console.log(sym1);
+4. Without symbols, duplicate properties are overridden
+   const bowl = {
+      'apple': { color: 'red', weight: 136.078 },
+      'banana': { color: 'yellow', weight: 183.151 },
+      'orange': { color: 'orange', weight: 170.097 },
+      'banana': { color: 'yellow', weight: 176.845 }
+    };
+    console.log(bowl); // Object {apple: Object, banana: Object, orange: Object}
+    NOTE: only one banana is present, previous one was overridden by
+    the new banana added to the bowl
+
+5. Use symbol to fix this problem.
+   const bowl = {
+      [Symbol('apple')]: { color: 'red', weight: 136.078 },
+      [Symbol('banana')]: { color: 'yellow', weight: 183.15 },
+      [Symbol('orange')]: { color: 'orange', weight: 170.097 },
+      [Symbol('banana')]: { color: 'yellow', weight: 176.845 }
+    };
+    console.log(bowl);
+    // Object {Symbol(apple): Object, Symbol(banana): Object,
+    Symbol(orange): Object, Symbol(banana): Object}
