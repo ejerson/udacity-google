@@ -1,0 +1,20 @@
+Prior to ES6, the old way to concatenate strings
+together was by using the string concatenation operator ( + ).
+
+As an alternative to using the string concatenation
+operator ( + ), you can use the String's concat() method,
+but both options are rather clunky for
+simulating true string interpolation.
+
+TEMPLATE LITERALS  are essentially string literals
+that include embedded expressions.
+
+  * use backticks (``) instead of quotes(''/"")
+  * can contain place holder using ${expression}
+  * preserves newlines as part of the string.
+
+let message = `${student.name} please see ${teacher.name} in ${teacher.room} to pick up your report card.`;
+
+const myName = '[NAME]';
+const greeting = `Hello, my name is ${myName}`;
+console.log(greeting);

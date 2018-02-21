@@ -1,0 +1,10 @@
+1. super must be called before this(just like in java)
+2. super(); is the correct way of creating a Superclass object
+   inside a Subclass constructor
+
+   class Toy {}
+   class Dragon extends Toy {
+    super();
+
+   }
+   const dragon1 = new Dragon();

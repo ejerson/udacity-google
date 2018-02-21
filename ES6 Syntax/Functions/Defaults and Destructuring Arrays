@@ -1,0 +1,22 @@
+*** USE IF I MUST ***
+Array Defaults with Array Destructuring
+
+* Weird way of calling a function with array default
+function createSundae([scoops = 1, toppings = ['Hot Fudge']] = []) { … }
+
+If I want to have default value for scoops and only change toppings, I would
+need to call the function like so:
+
+createSundae([undefined, ['Hot Fudge', 'Sprinkles', 'Caramel']]);
+
+*** USE THIS ONE IF I HAVE A CHOICE
+Object Defaults with Objecct Destructuring
+
+* More preferable way of doing default values because one does not
+need to worry about index related issues.
+
+function createSundae({scoops = 1, toppings = ['Hot Fudge']} = {}) { … }
+
+// automatically use the default value of scoops, do not have to
+// worry about index numbers.
+CreateSundae({toppings: ['Hot Fudge', 'Sprinkles', 'Caramel']});

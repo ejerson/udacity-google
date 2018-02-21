@@ -1,0 +1,79 @@
+* NOT A CLASS BASE language!
+* JavaScript uses functions to create objects
+* Links objects together by prototypal inheritance
+
+ES5 "Class"
+
+function Plane(numEngines) {
+  this.numEngines = numEngines;
+  this.enginesActive = false;
+}
+
+// methods "inherited" by all instances
+Plane.prototype.startEngines = function () {
+  console.log('starting engines...');
+  this.enginesActive = true;
+};
+
+const richardsPlane = new Plane(1);
+richardsPlane.startEngines();
+
+const jamesPlane = new Plane(4);
+jamesPlane.startEngines();
+
+1. the constructor function is called with the new keyword
+2. starts with a capital letter
+3. controls the setting of data on the objects that will be created
+4. "inherited" methods are placed on the constructor function's
+   prototype object
+
+The four items above are set up by ES6 Classes under the hood!
+
+ES6 Classes
+class Plane {
+  constructor(numEngines) {
+    this.numEngines = numEngines;
+    this.enginesActive = false;
+  }
+
+  startEngines() {
+    console.log('starting engines…');
+    this.enginesActive = true;
+  }
+}
+
+1. Class is just a function
+
+
+STATIC METHODS
+class Plane {
+  constructor(numEngines) {
+    this.numEngines = numEngines;
+    this.enginesActive = false;
+  }
+
+  static badWeather(planes) {
+    for (plane of planes) {
+      plane.enginesActive = false;
+    }
+  }
+
+  startEngines() {
+    console.log('starting engines…');
+    this.enginesActive = true;
+  }
+}
+
+// Static methods, just like in java, can be accessed using the class name
+Plane.badWeather([plane1, plane2, plane3]);
+
+
+Benefits of Classes
+1. less setup
+2. clearly defined constructor functions
+3. everything is contained
+
+Things to Remember about Classes
+1. class is not magic, it just a function (syntactic sugar)
+2. class is a mirage over prototypal inheritance
+3. use the new keyword to use a class

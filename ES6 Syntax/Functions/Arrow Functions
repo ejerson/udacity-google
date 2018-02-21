@@ -1,0 +1,42 @@
+***** ES5
+
+Functions can either be a function declaration or function expression.
+
+const upperizedNames = ['Farrin', 'Kagure', 'Asser'].map(function(name) {
+  return name.toUpperCase();
+});
+
+***** ES6
+  1. Arrow Functions are always expressions.
+  2. Concise syntax automatically returns the expression
+  3. Block body syntax
+      a. uses curly braces to wrap function body
+      b. needs a return statement
+  4. GOTCHAS
+      a. this keyword is slightly different with arrow functions
+      b. arrow functions are only expression, if I want to use
+      a function declaration, I would still need to use the ES5
+      way of creating a function
+
+const upperizedNames = ['Farrin', 'Kagure', 'Asser'].map(
+  name => name.toUpperCase()
+);
+
+
+const upperizedNames = ['Farrin', 'Kagure', 'Asser']
+  .map(name => name.toUpperCase());
+
+EXAMPLES:
+
+  ONE PARAMETER
+  const greet = name => `Hello ${name}!`;
+  greet('Asser'); // Hello Asser!
+
+  ZERO OR MORE THAN ONE
+  // empty parameter list requires parentheses
+  const sayHi = () => console.log('Hello World!');
+  sayHi();
+
+  // multiple parameters requires parentheses
+  const orderIceCream = (flavor, cone) => console.log(`Here's your ${flavor} ice cream in a ${cone} cone.`);
+  orderIceCream('chocolate', 'waffle');

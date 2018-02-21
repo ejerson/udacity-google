@@ -1,0 +1,37 @@
+ES5 'Constructor Functions'
+// constructor function
+function Plane(numEngines) {
+  this.numEngines = numEngines;
+  this.enginesActive = false;
+}
+
+// methods shared amongst all instances of Plane
+Plane.prototype.startEngines = function() {
+    console.log("starting engines...");
+    this.enginesActive = true;
+}
+
+// creats a new 'object' using the new keyword
+var richardsPlane = new Plane(1);
+richardsPlane.startEngines();
+
+
+ES6 Classes
+
+class Plane {
+  // constructor is a special method that exists in a class
+  constructor(numEngines) {
+      this.numEngines = numEngines;
+      this.enginesActive = false;
+  }
+
+  // methods that are inherited by objects are inside the class
+  startEngines() {
+  console.log('starting engines...');
+  this.enginesActive = true;
+  }
+}
+
+CREATE OBJECTS THE EXACT SAME WAY!
+var richardsPlane = new Plane(1);
+richardsPlane.startEngines();

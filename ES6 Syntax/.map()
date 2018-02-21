@@ -1,0 +1,2 @@
+.map() | pass a function to it, and it calls that function once on
+  every element in the array.

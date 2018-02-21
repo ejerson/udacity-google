@@ -1,0 +1,26 @@
+let type = 'quartz';
+let color = 'rose';
+let carat = 21.29;
+
+
+// Longhand
+let gemStone = {
+  type: type,
+  color: color,
+  carat: carat,
+  calculateWorth; function() {
+    // will calculate worth of gemstone
+  }
+}
+
+// Shorthand
+* if properties has the same names as variable
+I can use the syntax below.
+* no need to write the keyword function inside an object
+
+let gemStone = {
+  type,
+  color,
+  carat,
+  calculateWorth() {...}
+  };

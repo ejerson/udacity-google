@@ -1,0 +1,34 @@
+REST PARAMETER | allows one to represent an unknown number of elements
+  as an array.
+
+TWO USEFUL CASE:
+
+1. When assigning the values of an array to variables.
+
+const order = [20.17, 18.67, 1.50, "cheese", "eggs", "milk", "bread"];
+const [total, subtotal, tax, ...items] = order;
+console.log(total, subtotal, tax, items); // 20.17 18.67 1.5 ["cheese", "eggs", "milk", "bread"]
+
+VARIADIC FUNCTIONS are functions that take in an indefinite number
+  of arguments.
+
+ARGUMENT OBJECT is an array-like object that is available as a local
+  variable inside functions.
+
+********** ES5
+function sum() {
+  let total = 0;
+  for(const argument of arguments) {
+    total += argument;
+  }
+  return total;
+}
+
+********** ES6
+function sum(...nums) {
+  let total = 0;
+  for(const num of nums) {
+    total += num;
+  }
+  return total;
+}
