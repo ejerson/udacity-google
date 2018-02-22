@@ -1,0 +1,66 @@
+1. Regular Function | Once a function is invoked, there's no way to pause its execution.
+
+2. Generator Functions | allows us to pause mid execution
+        * invoking a generator function returns an iterator
+        * "yield" used to pause and send data out from the function
+        * great for iterating over a list one at a time and handling
+        each item on its own before moving on to the next one.
+
+      getEmployee();
+
+      // this is the response I get in Chrome:
+      getEmployee {[[GeneratorStatus]]: "suspended", [[GeneratorReceiver]]: Window}
+
+EXAMPLE:
+
+      function* getStudent() {
+          console.log('start of function');
+
+          const names = ['Ruben', 'Richard', 'Mike', 'Ryan', 'Jacques', 'Blue', 'Purple', 'Olive'];
+
+          for (const name of names) {
+              yield name; // yield the name back out of a function and then pause its execution
+          }
+
+          console.log('end of function');
+      }
+
+      getStudent(); // returns an iterator if only invoking the function
+
+      getStudent {[[GeneratorStatus]]: "suspended", [[GeneratorReceiver]]: Window}
+
+TO USE A GENERATOR FUNCTION DO THE FOLLOWING:
+      const generatorIterator = getStudent();
+      let result = generatorIterator.next();
+      result.value(); // "Ruben"
+
+      generatorIterator.next().value // "Richard"
+
+IMPORTANT:
+
+      function* udacity() {
+          yield 'Richard';
+          yield 'James'
+      }
+
+      NEED TO RUN .NEXT() METHOD THREE TIMES TO GET THROUGH THE FUNCTION ABOVE
+
+3.  next() is used to send data back to the generator
+
+4. Order of execution
+      function* funAnimals() {
+            const animals = [];
+
+            animals.push(yield);
+            animals.push(yield);
+            animals.push(yield);
+
+            return animals;
+      }
+
+      var it = funAnimals();
+      it.next(); // starts the generator
+      it.next('cat');
+      it.next('elephant');
+      it.next('lions');
+      it.next(); // closes the generator
