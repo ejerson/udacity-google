@@ -1,0 +1,63 @@
+1. JS Proxy
+      * will let one object stand in for  another object to handle
+      all the interaction for that object
+      * can handle request directly
+      * pass data back and forth to the target object
+
+2. Create Proxy
+      * use Proxy constructor new Proxy(), which takes two items:
+            1. the object that will be the proxy for
+            2. an object containing the list of methods it will handle for the
+            proxied object
+            3. the second object is called the HANDLER.
+
+      const richard = {status: 'looking for work'};
+
+      const handler = {
+          get(target, propName) {
+              console.log(target); // the `richard` object, not `handler` and not `agent`
+              console.log(propName); // the name of the property the proxy (`agent` in this case) is checking
+          }
+      };
+
+      const agent = new Proxy(richard, handler);
+      agent.status; // logs out the richard object (not the agent object!) and the name of the property being accessed (`status`)
+
+3. get(target, propName) | get trap
+      const richard = {status: 'looking for work'};
+      const handler = {
+      get(target, propName) {
+        return `He's following many leads, so you should offer a contract as soon as possible!`;
+      }
+      };
+      const agent = new Proxy(richard, handler);
+      agent.status; // returns the text `He's following many leads, so you should offer a contract as soon as possible!`
+
+4. set(target, propName, value) | set trap
+      const richard = {status: 'looking for work'};
+      const handler = {
+          set(target, propName, value) {
+              if (propName === 'payRate') { // if the pay is being set, take 15% as commission
+                  value = value * 0.85;
+              }
+              target[propName] = value;
+          }
+      };
+      const agent = new Proxy(richard, handler);
+      agent.payRate = 1000; // set the actor's pay to $1,000
+      agent.payRate; // $850 the actor's actual pay
+
+4. Other Traps
+      1. get | handle calls to property access
+      2. set | setting the property to a new value
+      3. apply |  handle being invoked(the object being proxied is a function)
+      4. has | handle the using "in" operator
+      5. deleteProperty | if a property is being deleted
+      6. ownKeys | when all keys are requested
+      7. construct | when the proxy is used with the new keyword as a constructor
+      8. defineProperty | when defineProperty is used to create a new property on the object
+      9. getOwnPropertyDescriptor | getting the property's descriptors
+      10. preventExtensions() |  handle calls to Object.preventExtensions() on the proxy object
+      11. isExtensible | handle calls to Object.isExtensible on the proxy object
+      12. getPrototypeOf | handle calls to Object.getPrototypeOf on the proxy object
+      13. setPrototypeOf | handle calls to Object.setPrototypeOf on the proxy object
