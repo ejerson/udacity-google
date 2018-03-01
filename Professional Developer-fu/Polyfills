@@ -1,0 +1,27 @@
+1. Polyfill
+      * deals with browser functionality that are missing,
+      provided by the developer.
+      * "a JavaScript file that patches a hole by replicating
+      some native feature that's missing."
+      * just regular JavaScript code
+
+2. Coined by Remy Sharp - https://remysharp.com/2010/10/08/what-is-a-polyfill
+
+3. Complete List of Polyfills
+   https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills
+
+
+4. Other sources:
+      https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills
+      https://en.wikipedia.org/wiki/Polyfill
+
+      if (!String.prototype.startsWith) {
+        String.prototype.startsWith = function (searchString, position) {
+          position = position || 0;
+          return this.substr(position, searchString.length) === searchString;
+        };
+      }
+
+
+      NOTE: (!String.prototype.startsWith) is used to avoid overriding the
+      native statsWith method.

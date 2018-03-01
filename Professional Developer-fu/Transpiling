@@ -1,0 +1,18 @@
+1. Transpiling
+      * use a transpiler to convert Java to JavaScript.
+
+2. Babel | converts ES6(ES2015) to ES5, JSX to JavaScript, and Flow to JavaScript.
+      * transform code from one language to another through plugins
+      http://babeljs.io/docs/plugins/
+      * presets are useful because they contain a group of plugins ready to be used
+      * ES2015 preset contains all the plugins I need to convert ES6 to ES5
+
+3. .babelrc | where I'd put the plugins and/or presets that my project uses
+
+      {
+          "presets": ["es2015"]
+      }
+
+4. Must have node installed, which automatically installs NPM
+
+IMPORTANT: Stay on top of all the changes that is happening in JavaScript.

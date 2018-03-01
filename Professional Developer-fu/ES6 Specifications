@@ -1,0 +1,17 @@
+1. Ecma International is an industry association that develops and oversees standards
+like JavaScript and JSON.
+
+      http://www.ecma-international.org/memento/index.html
+      http://www.ecma-international.org/ecma-262/6.0/index.html
+
+2. ES6 spec | http://www.ecma-international.org/ecma-262/6.0/index.html
+
+3. MDN Docs https://developer.mozilla.org/en-US/
+
+4. Browser Feature Updates
+      * Google Chrome - https://www.chromestatus.com/features#ES6
+      * Microsoft Edge - https://developer.microsoft.com/en-us/microsoft-edge/platform/status/?q=ES6
+      * Mozilla Firefox - https://platform-status.mozilla.org/
+      * Safari powered by WebKit - https://webkit.org/status/
+
+      BIRDS EYE VIEW: http://kangax.github.io/compat-table/es6/
