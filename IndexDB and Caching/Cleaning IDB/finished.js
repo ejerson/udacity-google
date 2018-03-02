@@ -1,4 +1,3 @@
-// public/js/main/IndexController.js
 import PostsView from './views/Posts';
 import ToastsView from './views/Toasts';
 import idb from 'idb';
@@ -77,12 +76,12 @@ IndexController.prototype._showCachedMessages = function() {
     // posts from IDB
     if (!db || indexController._postsView.showingPosts()) return;
 
-    // TODO: get all of the wittr message objects from indexeddb,
-    // then pass them to:
-    // indexController._postsView.addPosts(messages)
-    // in order of date, starting with the latest.
-    // Remember to return a promise that does all this,
-    // so the websocket isn't opened until you're done!
+    var index = db.transaction('wittrs')
+      .objectStore('wittrs').index('by-date');
+
+    return index.getAll().then(function(messages) {
+      indexController._postsView.addPosts(messages.reverse());
+    });
   });
 };
 
@@ -163,6 +162,26 @@ IndexController.prototype._onSocketMessage = function(data) {
     messages.forEach(function(message) {
       store.put(message);
     });
+
+
+
+
+
+    // TODO: keep the newest 30 entries in 'wittrs',
+    // but delete the rest.
+    //
+    // Hint: you can use .openCursor(null, 'prev') to
+    // open a cursor that goes through an index/store
+    // backwards.
+    store.index('by-date').openCursor(null, 'prev').then(function(cursor) {
+      return cursor.advance(30);
+    }).then(function deleteRest(cursor) {
+      if(!cursor) return;
+      // delete any entries beyond 30
+      cursor.delete();
+      return cursor.continue().then(deleteRest);
+    });
+
   });
 
   this._postsView.addPosts(messages);

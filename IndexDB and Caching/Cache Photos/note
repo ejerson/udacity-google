@@ -1,0 +1,20 @@
+1. can only read a given response once - this is because the original data is gone
+   keeping data in memory is a waste
+        response.json();
+        response.blob(); // can't read it like this anymore since
+        its been read above as json
+
+        same reasoning as above
+        event.responseWith(response); // can't read it again
+
+2. caching photos | open a cache, fetch from the network, and then
+   send the response to both the cache and back to the browser
+
+    event.responseWith(
+        cache.open('wittr-content-imgs').then(function(cache) {
+            return fetch(request).then(function(response) {
+                // clone the response
+                cache.put(request, response.clone());
+            });
+        })
+    );
