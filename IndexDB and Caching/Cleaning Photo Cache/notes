@@ -1,0 +1,10 @@
+// available for pages and service workers
+
+// to remove entries from a cache, passing the url of the thing we'd want to delete
+cache.delete(request);
+
+
+// returns a promise that gives us all the request for entries in the cache.
+cache.keys().then(function(request) {
+  //...
+});
