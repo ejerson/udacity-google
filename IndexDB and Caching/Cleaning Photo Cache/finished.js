@@ -164,6 +164,33 @@ IndexController.prototype._cleanImageCache = function() {
     //
     // Open the 'wittr-content-imgs' cache, and delete any entry
     // that you no longer need.
+
+    // array of images I want
+    var imagesWanted = [];
+
+    var tx = db.transaction('wittrs');
+    return tx.objectStore('wittrs').getAll().then(function(messages) {
+      messages.forEach(function(message) {
+        if (message.photo) {
+          // add images to imagesWanted
+          imagesWanted.push(message.photo);
+        }
+      });
+
+      return caches.open('wittr-content-imgs');
+    }).then(function(cache) {
+      return cache.keys().then(function(request) {
+
+        request.forEach(function(request) {
+          var url = new URL(request.url);
+          if (!imagesWanted.includes(url.pathname)) {
+              cache.delete(request);
+          }
+        });
+
+      });
+    });
+
   });
 };
 
