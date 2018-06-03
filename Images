@@ -1,0 +1,7 @@
+IMAGES: less pixels and highest compression possible = less bytes.
+    1. Use max-width to adjust for larger viewport
+    2. width: calc((100% - 10px)/2);
+          ==> Great way to combine absolute and relative values
+    3. SVG (vector image) is better for responsive designs
+    4. Raster is pixel based (use webP)
+    5. USE JPEG for images and SVG for Vector Images
