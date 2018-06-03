@@ -5,3 +5,4 @@ IMAGES: less pixels and highest compression possible = less bytes.
     3. SVG (vector image) is better for responsive designs
     4. Raster is pixel based (use webP)
     5. USE JPEG for images and SVG for Vector Images
+    5. If I can't use SVG use PNG
